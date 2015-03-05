@@ -94,15 +94,15 @@ class TickMetricSnapshotBufferSpec extends BaseKamonSpec("trace-metrics-spec") w
     val secondEmpty = TickMetricSnapshot(new MilliTimestamp(2000), new MilliTimestamp(3000), Map.empty)
     val thirdEmpty = TickMetricSnapshot(new MilliTimestamp(3000), new MilliTimestamp(4000), Map.empty)
 
-    traceRecorder.ElapsedTime.record(10L)
-    traceRecorder.ElapsedTime.record(20L)
-    traceRecorder.ElapsedTime.record(30L)
+    traceRecorder.elapsedTime.record(10L)
+    traceRecorder.elapsedTime.record(20L)
+    traceRecorder.elapsedTime.record(30L)
     val firstNonEmpty = TickMetricSnapshot(new MilliTimestamp(1000), new MilliTimestamp(2000), Map(
       (testTraceIdentity -> traceRecorder.collect(collectionContext))))
 
-    traceRecorder.ElapsedTime.record(10L)
-    traceRecorder.ElapsedTime.record(10L)
-    traceRecorder.ElapsedTime.record(300L)
+    traceRecorder.elapsedTime.record(10L)
+    traceRecorder.elapsedTime.record(10L)
+    traceRecorder.elapsedTime.record(300L)
     val secondNonEmpty = TickMetricSnapshot(new MilliTimestamp(1000), new MilliTimestamp(2000), Map(
       (testTraceIdentity -> traceRecorder.collect(collectionContext))))
   }

@@ -144,14 +144,14 @@ class MetricReporterSpec extends BaseKamonSpec("metric-reporter-spec") with Spra
 
     def collectRecorder = recorder.collect(collectionContext)
 
-    recorder.ElapsedTime.record(1000000)
-    recorder.ElapsedTime.record(2000000)
-    recorder.ElapsedTime.record(3000000)
+    recorder.elapsedTime.record(1000000)
+    recorder.elapsedTime.record(2000000)
+    recorder.elapsedTime.record(3000000)
     val firstSnapshot = TickMetricSnapshot(new MilliTimestamp(1415587618000L), new MilliTimestamp(1415587678000L), Map(testTraceID -> collectRecorder))
 
-    recorder.ElapsedTime.record(6000000)
-    recorder.ElapsedTime.record(5000000)
-    recorder.ElapsedTime.record(4000000)
+    recorder.elapsedTime.record(6000000)
+    recorder.elapsedTime.record(5000000)
+    recorder.elapsedTime.record(4000000)
     val secondSnapshot = TickMetricSnapshot(new MilliTimestamp(1415587678000L), new MilliTimestamp(1415587738000L), Map(testTraceID -> collectRecorder))
   }
 }
